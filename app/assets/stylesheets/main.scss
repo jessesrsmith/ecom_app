@@ -4,7 +4,7 @@
 
 // Mixins, Variables, etc.
 // --------------------------------------------------
-$footer-background: #f5f5f5; 
+$footer-background: #f5f5f5;
 
 // Custom page CSS
 // --------------------------------------------------
@@ -16,7 +16,7 @@ html {
 body {
   // Margin bottom by footer height
   margin-bottom: 60px;
-  
+
   >.container {
     padding: 60px 15px 0;
   }
@@ -31,7 +31,7 @@ body {
   height: 60px;
   position: absolute;
   width: 100%;
-  
+
   >.container {
     padding-left: 15px;
     padding-right: 15px;
