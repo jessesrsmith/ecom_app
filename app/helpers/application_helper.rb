@@ -7,4 +7,8 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def active_nav(path)
+    current_page?(path) ? "active" : nil
+  end
 end
