@@ -51,9 +51,9 @@ textarea,
 select,
 .uneditable-input {
   border: 1px solid $gray-text;
+  box-sizing: border-box;
   margin-bottom: 15px;
   width: 100%;
-  box-sizing: border-box;
 }
 
 input {
