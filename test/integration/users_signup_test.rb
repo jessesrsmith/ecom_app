@@ -13,4 +13,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select "div#error_explanation"
     assert_select "div.field_with_errors"
   end
+
+  test "valid signup" do
+    get signup_path
+    assert_difference "User.count", 1 do
+      post_via_redirect users_path, user: { name: "Example User",
+                                    email: "user@valid.com",
+                                    password: "foobar",
+                                    password_confirmation: "foobar" }
+    end
+    assert_template "users/show"
+    assert_not flash.nil?
+  end
 end
