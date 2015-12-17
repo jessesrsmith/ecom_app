@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
@@ -10,7 +10,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                               password_confirmation: "bar" }
     end
     assert_template "users/new"
-    assert_select "div#error_explanation"
+    assert_select "div#error-explanation"
     assert_select "div.field_with_errors"
   end
 
@@ -18,9 +18,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get signup_path
     assert_difference "User.count", 1 do
       post_via_redirect users_path, user: { name: "Example User",
-                                    email: "user@valid.com",
-                                    password: "foobar",
-                                    password_confirmation: "foobar" }
+                                            email: "user@valid.com",
+                                            password: "foobar",
+                                            password_confirmation: "foobar" }
     end
     assert_template "users/show"
     assert_not flash.nil?

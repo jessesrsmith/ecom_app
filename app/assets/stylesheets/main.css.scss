@@ -5,12 +5,7 @@
 // Mixins, Variables, etc.
 // --------------------------------------------------
 $footer-background: #f5f5f5;
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
+$gray-text: #bbb;
 
 // Custom page CSS
 // --------------------------------------------------
@@ -51,27 +46,32 @@ body {
 // Form styles
 // --------------------------------------------------
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid $gray-text;
   margin-bottom: 15px;
-  @include box_sizing;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input {
-  height: auto !important;
+  height: auto;
 }
 
-#error_explanation {
+#error-explanation {
   color: $brand-danger;
+
   ul {
     color: $brand-danger;  //Why duplicate rule from parent?
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
   }
 }
 
 .field_with_errors {
   @extend .has-error;
+
   .form-control {
     color: $state-danger-text;  //Why duplicate rule from parent?
   }
