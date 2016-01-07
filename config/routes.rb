@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get "sessions/new"
 
   # You can have the root of your site routed with "root"
   root "static_pages#home"
