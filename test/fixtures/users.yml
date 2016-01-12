@@ -7,5 +7,3 @@ john:
   name: John Smith
   email: john@example.com
   password_digest: <%= User.digest('password') %>
-
-  
