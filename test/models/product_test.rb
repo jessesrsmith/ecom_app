@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
   def setup
@@ -28,14 +28,14 @@ class ProductTest < ActiveSupport::TestCase
     @product.price = 0.00
     assert_not @product.valid?
     assert_equal ["must be greater than or equal to 0.01"],
-      @product.errors[:price]
+                 @product.errors[:price]
   end
 
   test "price must be positive" do
     @product.price = -1
     assert_not @product.valid?
-    assert_equal ["must be greater than or equal to 0.01"], 
-      @product.errors[:price]
+    assert_equal ["must be greater than or equal to 0.01"],
+                 @product.errors[:price]
     @product.price = 1
     assert @product.valid?
   end
@@ -47,7 +47,7 @@ class ProductTest < ActiveSupport::TestCase
 
   test "title should be unique" do
     duplicate_product = Product.new(title: products(:one).title,
-                                    description: "yyy", 
+                                    description: "yyy",
                                     price:  1)
     duplicate_product.save
     assert_not duplicate_product.valid?

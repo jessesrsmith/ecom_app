@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ProductsControllerTest < ActionController::TestCase
   setup do
@@ -22,7 +22,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should create product" do
-    assert_difference('Product.count') do
+    assert_difference("Product.count") do
       post :create, product: @update
     end
 
@@ -45,7 +45,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should destroy product" do
-    assert_difference('Product.count', -1) do
+    assert_difference("Product.count", -1) do
       delete :destroy, id: @product
     end
 
