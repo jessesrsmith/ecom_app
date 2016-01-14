@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   get "sessions/new"
 
   # You can have the root of your site routed with "root"

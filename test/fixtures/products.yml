@@ -1,0 +1,9 @@
+one:
+  title: Product One
+  description: A really nice thing to buy.
+  price: 9.99
+
+two:
+  title: Product Two
+  description: Also Really nice to buy.
+  price: 5.00
