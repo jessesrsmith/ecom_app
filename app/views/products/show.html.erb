@@ -3,13 +3,18 @@
   <h1>Products#show</h1>
 </div>
 <p class="lead">Find me in app/views/products/show.html.erb</p>
+<p><%= link_to "Return to store", products_path%></p>
 
 <div class="thumbnail">
   <img class="img-responsive" src="http://placehold.it/800x300" alt="">
   <div class="caption-full">
     <h4 class="pull-right"><%= number_to_currency(@product.price) %></h4>
-    <h4><a href="#"><%= @product.title %></a></h4>
-    <a href="#" class="btn btn-default pull-right" role="button">Add to cart</a>
-    <p><%= @product.description %></p>
+    <h4><%= @product.title %></h4>
+    <span class="pull-right">
+      <a href="#" class="btn btn-primary" role="button">Add to cart</a>
+    </span>
+    <div>
+      <p><%= @product.description %></p>
+    </div>
   </div>
 </div>

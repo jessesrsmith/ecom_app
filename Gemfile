@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'newrelic_rpm'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bcrypt', '3.1.7'
+gem 'faker', '1.6.1'
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
