@@ -12,12 +12,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      flash[:success] = "Thanks for signing up!"
-      redirect_to @user
-    else
-      render "new"
+
+    respond_to do |format|
+      if @user.save
+        log_in @user
+        format.html { redirect_to @user, success: "Thanks for signing up!" }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: 
+          :unprocessable_entity }
+      end
     end
   end
 
@@ -25,11 +30,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render "edit"
+    respond_to do |format|
+      if @user.update_attributes(user_params)
+        format.html { redirect_to @user, success: "Profile updated" }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: 
+          :unprocessable_entity }
+      end
     end
   end
 
