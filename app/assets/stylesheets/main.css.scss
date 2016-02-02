@@ -115,23 +115,22 @@ input {
   }
 }
 
+.caption-full {
+  padding: 9px;
+
+  p {
+    overflow: scroll;
+  }
+
+  a {
+    margin: 0 0 10px 10px;
+  }
+}
+
 .thumbnail {
   padding: 0;
 
   img {
     width: 100%;
-  }
-
-  .caption-full {
-    overflow: auto;
-    padding: 9px;
-
-    p {
-      overflow: hidden;
-    }
-
-    a {
-      margin: 0 0 10px 10px;
-    }
   }
 }
