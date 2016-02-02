@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @user.update_attributes(user_params)
         format.html { redirect_to @user, success: "Profile updated" }
