@@ -22,5 +22,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
       assert_select "li.active", 1
     end
   end
-
 end
