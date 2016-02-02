@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :products
-  get "sessions/new"
 
   # You can have the root of your site routed with "root"
   root "static_pages#home"
@@ -11,6 +9,7 @@ Rails.application.routes.draw do
   get    "login"   =>  "sessions#new"
   post   "login"   =>  "sessions#create"
   delete "logout"  =>  "sessions#destroy"
+  resources :products
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

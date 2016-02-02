@@ -1,6 +1,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap/variables";
 
 // Mixins, Variables, etc.
 // --------------------------------------------------
@@ -17,10 +18,14 @@ html {
 body {
   // Margin bottom by footer height
   margin-bottom: 60px;
+  overflow-y: scroll;
+  padding-top: 70px;
+}
 
-  >.container {
-    padding: 60px 15px 0;
-  }
+// Nav styles
+// --------------------------------------------------
+.glyphicon {
+  word-spacing: -0.5em;
 }
 
 // Sticky footer styles
@@ -41,6 +46,13 @@ body {
 
 .container .text-muted {
   margin: 20px 0;
+}
+
+// Home styles
+// --------------------------------------------------
+
+.jumbotron-spacer {
+  margin-top: 50px;
 }
 
 // Form styles
@@ -92,6 +104,33 @@ input {
   width: auto;
 }
 
+// Product styles
+// --------------------------------------------------
+.caption {
+  height: 130px;
+  overflow: hidden;
 
+  h4 {
+    white-space: nowrap;
+  }
+}
 
+.caption-full {
+  padding: 9px;
 
+  p {
+    overflow: scroll;
+  }
+
+  a {
+    margin: 0 0 10px 10px;
+  }
+}
+
+.thumbnail {
+  padding: 0;
+
+  img {
+    width: 100%;
+  }
+}
