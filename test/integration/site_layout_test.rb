@@ -8,5 +8,19 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", help_path
     assert_select "a[href=?]", about_path
     assert_select "a[href=?]", contact_path
+    assert_select "a[href=?]", products_path
   end
+
+  test "one nav link should be active" do
+    get root_path
+    assert_select "ul.nav" do
+      assert_select "li.active", 1
+    end
+
+    get products_path
+    assert_select "ul.nav" do
+      assert_select "li.active", 1
+    end
+  end
+
 end

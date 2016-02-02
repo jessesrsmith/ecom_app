@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore Simplecov
+/coverage
+
+#Ignore notes directory
+/notes
