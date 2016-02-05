@@ -3,4 +3,6 @@
   <h1>Users#show</h1>
 </div>
 <p class="lead">Find me in app/views/users/show.html.erb</p>
-<p><%= @user.name %>, <%= @user.email %></p>
+<p>Name: <%= @user.name %></p> 
+<p>Email: <%= @user.email %></p>
+<a><%= link_to "Settings", edit_user_path(@user) %></a>
