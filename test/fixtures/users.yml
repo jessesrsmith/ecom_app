@@ -1,9 +1,22 @@
-michael:
-  name: Michael Example
-  email: michael@example.com
-  password_digest: <%= User.digest('password') %>
+admin_smith:
+  name:  Admin Smith
+  email: admin@test.com
+  password_digest: <%= User.digest('foobar') %>
+  admin: true
 
-john:
-  name: John Smith
-  email: john@example.com
-  password_digest: <%= User.digest('password') %>
+user_a:
+  name: User A
+  email: usera@test.com
+  password_digest: <%= User.digest('foobar') %>
+
+user_b:
+  name: User B
+  email: userb@test.com
+  password_digest: <%= User.digest('foobar') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@test.com" %>
+  password_digest: <%= User.digest('foobar') %>
+<% end %>
