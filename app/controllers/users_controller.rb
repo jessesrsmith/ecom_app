@@ -70,9 +70,8 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      begin
-        @user = User.find(params[:id])
-        redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
       rescue ActiveRecord::RecordNotFound
         redirect_to root_url  #prevents friendly forwarding from showing 404 pages
       end

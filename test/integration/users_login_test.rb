@@ -61,7 +61,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get "/users/abc/edit"
     assert_redirected_to login_path
     log_in_as(@user)
-    assert_redirected_to  "/users/abc/edit"
+    assert_redirected_to "/users/abc/edit"
     follow_redirect!
     assert_redirected_to root_path
   end

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UsersDestroyTestTest < ActionDispatch::IntegrationTest
   def setup
@@ -8,10 +8,8 @@ class UsersDestroyTestTest < ActionDispatch::IntegrationTest
 
   test "successful user deletion when logged in as admin" do
     log_in_as @admin
-    assert_difference 'User.count', -1 do
+    assert_difference "User.count", -1 do
       delete user_path(@user)
     end
   end
 end
-
-
