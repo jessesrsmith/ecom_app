@@ -2,7 +2,7 @@ require "test_helper"
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:michael)
+    @user = users(:user_a)
   end
 
   test "login with invalid information" do
@@ -17,7 +17,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login with valid information" do
     get login_path
-    post login_path, session: { email: @user.email, password: "password" }
+    post login_path, session: { email: @user.email, password: "foobar" }
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
@@ -48,5 +48,21 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login without remembering" do
     log_in_as(@user, remember_me: "0")
     assert_nil cookies["remember_token"]
+  end
+
+  test "login with freindly forwarding" do
+    get edit_user_path(@user)
+    assert_redirected_to login_path
+    log_in_as @user
+    assert_redirected_to edit_user_path(@user)
+  end
+
+  test "freindly forwarding with invalid user url" do
+    get "/users/abc/edit"
+    assert_redirected_to login_path
+    log_in_as(@user)
+    assert_redirected_to "/users/abc/edit"
+    follow_redirect!
+    assert_redirected_to root_path
   end
 end
