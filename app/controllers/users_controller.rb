@@ -20,8 +20,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
-        UserMailer.account_activation(@user).deliver_now
+        @user.send_activation_email
         format.html { redirect_to root_url, info: "Please check your email to activate your account." }
         # format.json { render :show, status: :created, location: @user }
       else
