@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
+  get "password_resets/new"
 
-  get 'password_resets/edit'
+  get "password_resets/edit"
 
   # You can have the root of your site routed with "root"
   root "static_pages#home"

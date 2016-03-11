@@ -1,7 +1,6 @@
 require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
-
   test "account_activation" do
     user = users(:user_a)
     user.activation_token = User.new_token
