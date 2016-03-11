@@ -20,9 +20,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
-        format.html { redirect_to @user, success: "Thanks for signing up!" }
-        format.json { render :show, status: :created, location: @user }
+        @user.send_activation_email
+        format.html { redirect_to root_url, info: "Please check your email to activate your account." }
+        # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -74,7 +74,6 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
       rescue ActiveRecord::RecordNotFound
         redirect_to root_url  #prevents friendly forwarding from showing 404 pages
-      end
     end
 
     def admin_user
