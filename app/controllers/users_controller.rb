@@ -21,10 +21,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user.send_activation_email
-        format.html {
-                      redirect_to root_url,
-                      info: "Please check your email to activate your account."
-                    }
+        format.html { redirect_to root_url, info: "Please check your email to activate your account." }
         # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
