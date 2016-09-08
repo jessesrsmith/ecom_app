@@ -37,11 +37,10 @@
           <%= active_nav_link("Login", login_path) %>
           <%= active_nav_link("Sign Up", signup_path) %>
         <% end %>
-        <li>
-          <%= link_to "#" do %>
-            <span class="glyphicon glyphicon-shopping-cart"> 0 item(s)</span>
-          <% end %>
-        </li>
+          <%= active_nav_link("<span class='glyphicon glyphicon-shopping-cart'></span>
+                               <span class='cart-quantity'>
+                               #{current_cart.item_quantity} item(s)
+                               </span>".html_safe, cart_path(id: current_cart)) %>
       </ul>
     </div>
   </div>

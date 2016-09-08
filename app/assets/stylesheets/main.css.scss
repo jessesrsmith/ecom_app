@@ -135,4 +135,24 @@ input {
   }
 }
 
+// Button styles
+// --------------------------------------------------
+.btn {
+  width: auto;
+  margin-bottom: 18px;
+}
 
+.btn_holder {
+  float: left;
+  margin-right: 10px;
+}
+
+.store-btn {
+  position: fixed;
+}
+
+.item-quantity {
+  input {
+    margin-bottom: 5px;
+  }
+}
