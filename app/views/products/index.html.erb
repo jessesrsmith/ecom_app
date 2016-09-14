@@ -16,8 +16,10 @@
               <h4 class="pull-right"><%= number_to_currency(product.price) %></h4>
               <h4><%= link_to product.title, product %></h4>
               <p><%= truncate(sanitize(product.description), length: 50) %></p>
-              <p><%= button_to("Add to cart", line_items_path(product_id: product), class: "btn btn-primary", 
-                 remote: true) %></p>
+              <p>
+                <%= button_to("Add to cart", line_items_path(product_id: product), class: "btn btn-primary", 
+                    remote: true) %>
+              </p>
             </div>
           </div>
         </div>

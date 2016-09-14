@@ -120,9 +120,10 @@ input {
 
   p {
     overflow: scroll;
+    overflow: hidden;
   }
 
-  a {
+  .btn {
     margin: 0 0 10px 10px;
   }
 }
@@ -151,6 +152,8 @@ input {
   position: fixed;
 }
 
+// Cart styles
+// --------------------------------------------------
 .item-quantity {
   input {
     margin-bottom: 5px;
