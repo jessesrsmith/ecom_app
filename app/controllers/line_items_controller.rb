@@ -33,12 +33,10 @@ class LineItemsController < ApplicationController
       if @line_item.save
         format.html { redirect_to products_path }
         format.js   { }
-        format.json { render action: 'show',
-          status: :created, location: @line_item }
+        format.json { render action: "show", status: :created, location: @line_item }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @line_item.errors,
-          status: :unprocessable_entity }
+        format.html { render action: "new" }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +46,7 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to @cart, success: 'Quantity updated.' }
+        format.html { redirect_to @cart, success: "Quantity updated." }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -63,10 +61,10 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       if @cart.line_items.empty?
-        format.html { redirect_to products_url, warning: "Your cart is empty", success: 'Product was removed from cart.' }
+        format.html { redirect_to products_url, warning: "Your cart is empty", success: "Product was removed from cart." }
         format.json { head :no_content }
       else
-        format.html { redirect_to cart_path(id: @cart), success: 'Product was removed from cart.' }
+        format.html { redirect_to cart_path(id: @cart), success: "Product was removed from cart." }
         format.json { head :no_content }
       end
     end
