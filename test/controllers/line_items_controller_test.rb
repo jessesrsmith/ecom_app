@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LineItemsControllerTest < ActionController::TestCase
   setup do
@@ -17,7 +17,7 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should create line_item" do
-    assert_difference('LineItem.count') do
+    assert_difference("LineItem.count") do
       post :create, product_id: products(:one).id
     end
 
@@ -25,7 +25,7 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should create line_item via Ajax" do
-    assert_difference('LineItem.count') do
+    assert_difference("LineItem.count") do
       xhr :post, :create, product_id: products(:one).id
     end
 
@@ -48,13 +48,13 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should destroy line_item" do
-    assert_difference('LineItem.count', -1) do
+    assert_difference("LineItem.count", -1) do
       delete :destroy, id: @line_item
     end
 
-    if LineItem.count.zero? 
+    if LineItem.count.zero?
       assert_redirected_to assigns(:cart)
-    else   
+    else
       assert_redirected_to products_url
     end
   end
