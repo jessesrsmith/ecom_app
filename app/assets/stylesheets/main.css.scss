@@ -120,9 +120,10 @@ input {
 
   p {
     overflow: scroll;
+    overflow-x: hidden;
   }
 
-  a {
+  .btn {
     margin: 0 0 10px 10px;
   }
 }
@@ -135,4 +136,21 @@ input {
   }
 }
 
+// Button styles
+// --------------------------------------------------
+.btn {
+  margin-bottom: 18px;
+  width: auto;
+}
 
+.store-btn {
+  position: fixed;
+}
+
+// Cart styles
+// --------------------------------------------------
+.item-quantity {
+  input {
+    margin-bottom: 5px;
+  }
+}
