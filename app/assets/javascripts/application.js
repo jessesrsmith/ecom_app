@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+// Prevents buttons from remaining active
+$(document).ready(function () {
+  $(".btn").mouseup(function(){
+    $(this).blur();
+  })
+});
