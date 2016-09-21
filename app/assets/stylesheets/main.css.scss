@@ -120,7 +120,7 @@ input {
 
   p {
     overflow: scroll;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .btn {
@@ -139,13 +139,8 @@ input {
 // Button styles
 // --------------------------------------------------
 .btn {
-  width: auto;
   margin-bottom: 18px;
-}
-
-.btn_holder {
-  float: left;
-  margin-right: 10px;
+  width: auto;
 }
 
 .store-btn {
