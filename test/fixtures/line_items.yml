@@ -1,9 +1,11 @@
 one:
   product_id: 1
   cart_id:
-  quantity: 3 
+  quantity: 3
+  order: one
 
 two:
   product_id: 2
   cart_id:
   quantity: 1 
+  order: one

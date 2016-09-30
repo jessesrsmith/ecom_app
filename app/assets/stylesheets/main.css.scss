@@ -154,3 +154,14 @@ input {
     margin-bottom: 5px;
   }
 }
+
+//Checkout styles
+// --------------------------------------------------
+.test {
+  .stripe-button-el {
+    span {
+      background: $brand-primary;
+      box-shadow: none;
+    }
+  }
+}
