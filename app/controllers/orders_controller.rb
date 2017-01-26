@@ -20,8 +20,6 @@ class OrdersController < ApplicationController
       redirect_to products_url, warning: "Your cart is empty"
       return
     end
-
-    @order = Order.new
   end
 
   # GET /orders/1/edit
@@ -31,7 +29,30 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    # Amount in cents
+    @amount = (@cart.total_price * 100).to_i
+
+    # Stripe
+    begin
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+    end
+
+    # DB Order
+    @order = Order.new do |o|
+      o.name = params[:stripeBillingName]
+      o.total = @cart.total_price
+    end
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
@@ -73,6 +94,7 @@ class OrdersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
@@ -80,6 +102,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name)
+      params.permit(:stripeBillingName)
     end
 end

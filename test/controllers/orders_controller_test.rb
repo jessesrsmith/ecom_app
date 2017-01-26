@@ -30,7 +30,11 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should create order" do
     assert_difference('Order.count') do
-      post :create, order: { name: @order.name, total: @order.total }
+      post :create, params: {
+        stripeBillingName: "Jesse Smith",
+        stripeEmail: "test@user.com",
+        stripeToken: "valid_card_token"
+      }
     end
 
     assert_redirected_to products_path

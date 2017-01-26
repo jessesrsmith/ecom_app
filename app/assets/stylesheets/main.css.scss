@@ -119,7 +119,6 @@ input {
   padding: 9px;
 
   p {
-    overflow: scroll;
     overflow-x: hidden;
   }
 
@@ -160,8 +159,7 @@ input {
 .test {
   .stripe-button-el {
     span {
-      background: $brand-primary;
-      box-shadow: none;
+      //box-shadow: none;
     }
   }
 }

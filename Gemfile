@@ -40,6 +40,7 @@ gem 'faker', '1.6.1'
 gem 'will_paginate', '~> 3.0.6'
 gem 'bootstrap-will_paginate'
 gem 'stripe'
+gem 'stripe-ruby-mock', '~> 2.4.0', :require => 'stripe_mock'
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
