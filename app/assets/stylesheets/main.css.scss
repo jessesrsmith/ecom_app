@@ -119,7 +119,6 @@ input {
   padding: 9px;
 
   p {
-    overflow: scroll;
     overflow-x: hidden;
   }
 
@@ -152,5 +151,15 @@ input {
 .item-quantity {
   input {
     margin-bottom: 5px;
+  }
+}
+
+//Checkout styles
+// --------------------------------------------------
+.test {
+  .stripe-button-el {
+    span {
+      //box-shadow: none;
+    }
   }
 }

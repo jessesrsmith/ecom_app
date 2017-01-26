@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :orders
+  resources :orders
+  resources :orders
   # You can have the root of your site routed with "root"
   root "static_pages#home"
   get    "help"    =>  "static_pages#help"
@@ -11,10 +14,11 @@ Rails.application.routes.draw do
   delete "logout"  =>  "sessions#destroy"
   get "password_resets/new"
   get "password_resets/edit"
-  resources :products
   resources :users
+  resources :products
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :line_items
   resources :carts
+  resources :charges
 end
