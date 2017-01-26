@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
@@ -14,7 +14,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "requires item in cart" do
     get :new
     assert_redirected_to products_path
-    assert_equal flash[:warning], 'Your cart is empty'
+    assert_equal flash[:warning], "Your cart is empty"
   end
 
   test "should get new" do
@@ -29,7 +29,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
-    assert_difference('Order.count') do
+    assert_difference("Order.count") do
       post :create, params: {
         stripeBillingName: "Jesse Smith",
         stripeEmail: "test@user.com",
@@ -56,7 +56,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should destroy order" do
-    assert_difference('Order.count', -1) do
+    assert_difference("Order.count", -1) do
       delete :destroy, id: @order
     end
 
