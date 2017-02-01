@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product,     only: [:show, :edit, :update, :destroy]
+  before_action :admin_user,      only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @products = Product.order(:title)
@@ -55,9 +56,12 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :description, :price)
     end
 
-    # Before filters
-
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def admin_user
+      @user = current_user
+      redirect_to(root_url) unless logged_in? && @user.admin?
     end
 end

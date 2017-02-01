@@ -1,20 +1,17 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:new, :create]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart,        only: [:new, :create]
+  before_action :set_order,       only: [:show, :edit, :update, :destroy]
+  # Admin action for future functionality
+  before_action :admin_user,      only: [:index, :show, :edit, :update, :destroy]
 
-  # GET /orders
-  # GET /orders.json
   def index
     @orders = Order.all
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
   def show
   end
 
-  # GET /orders/new
   def new
     if @cart.line_items.empty?
       redirect_to products_url, warning: "Your cart is empty"
@@ -22,12 +19,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1/edit
   def edit
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
     # Amount in cents
     @amount = (@cart.total_price * 100).to_i
@@ -69,8 +63,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -83,8 +75,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order.destroy
     respond_to do |format|
@@ -103,5 +93,10 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.permit(:stripeBillingName)
+    end
+
+    def admin_user
+      @user = current_user
+      redirect_to(root_url) unless logged_in? && @user.admin?
     end
 end

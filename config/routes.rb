@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :orders
-  resources :orders
-  resources :orders
   # You can have the root of your site routed with "root"
   root "static_pages#home"
   get    "help"    =>  "static_pages#help"
@@ -18,7 +15,7 @@ Rails.application.routes.draw do
   resources :products
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :line_items
-  resources :carts
-  resources :charges
+  resources :line_items,          only: [:create, :update, :destroy]
+  resources :carts,               only: [:show, :destroy]
+  resources :orders
 end

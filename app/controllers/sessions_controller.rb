@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-  # instance variable used in user_login_test via assigns
+  # Instance variable used in user_login_test via assigns
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])

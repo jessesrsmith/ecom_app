@@ -3,9 +3,11 @@ require "test_helper"
 class OrdersControllerTest < ActionController::TestCase
   setup do
     @order = orders(:one)
+    @admin = users(:admin_smith)
   end
 
   test "should get index" do
+    log_in_as(@admin)
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
@@ -41,21 +43,25 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should show order" do
+    log_in_as(@admin)
     get :show, id: @order
     assert_response :success
   end
 
   test "should get edit" do
+    log_in_as(@admin)
     get :edit, id: @order
     assert_response :success
   end
 
   test "should update order" do
+    log_in_as(@admin)
     patch :update, id: @order, order: { name: @order.name, total: @order.total }
     assert_redirected_to order_path(assigns(:order))
   end
 
   test "should destroy order" do
+    log_in_as(@admin)
     assert_difference("Order.count", -1) do
       delete :destroy, id: @order
     end
