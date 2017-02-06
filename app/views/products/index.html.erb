@@ -1,9 +1,9 @@
 <% provide(:title, "Product") %>
 
 <div class="page-header">
-  <h1>Products#index</h1>
+  <h1>Shop</h1>
 </div>
-<p class="lead">Find me in app/views/products/index.html.erb</p>
+<h2 class="lead">Our products</h2>
 
 <div class="row">
   <%= cache ['all_products', Product.latest] do %>

@@ -27,7 +27,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
             ><%= current_user.name %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <%= active_nav_link("Profile", current_user) %>
+              <%= active_nav_link("Account", current_user) %>
               <%= active_nav_link("Settings", edit_user_path(current_user)) %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Logout", logout_path, method:"delete" %></li>
@@ -39,7 +39,7 @@
         <% end %>
           <%= active_nav_link("<span class='glyphicon glyphicon-shopping-cart'></span>
                                <span class='cart-quantity'>
-                               #{current_cart.item_quantity} item(s)
+                                 #{ pluralize(current_cart.item_quantity, "item") }
                                </span>".html_safe, cart_path(id: current_cart)) %>
       </ul>
     </div>

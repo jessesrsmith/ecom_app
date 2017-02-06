@@ -1,9 +1,12 @@
 <% provide(:title, @product.title) %>
 <div class="page-header">
-  <h1>Products#show</h1>
+  <h1><%= @product.title %></h1>
 </div>
-<p class="lead">Find me in app/views/products/show.html.erb</p>
-<p><%= link_to "Return to products", products_path%></p>
+<h2 class="lead"><%= sanitize(@product.description.split(". ").first) %>.</h2>
+
+<%=link_to products_path, class: "btn btn-default mb-20" do %>
+  <span>Return to store</span>
+<% end %>
 
 <div class="thumbnail">
   <%= image_tag("http://placehold.it/800x300", class: "img-responsive", alt: "") %>

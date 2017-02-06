@@ -40,6 +40,8 @@ gem 'faker', '1.6.1'
 gem 'will_paginate', '~> 3.0.6'
 gem 'bootstrap-will_paginate'
 gem 'stripe'
+gem 'font-awesome-sass'
+gem 'data-confirm-modal'
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

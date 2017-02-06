@@ -3,9 +3,6 @@ class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   def show
-    if @cart.line_items.empty?
-      flash.now[:warning] = "Your cart is empty"
-    end
   end
 
   def destroy
