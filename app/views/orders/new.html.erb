@@ -1,11 +1,10 @@
 <% provide(:title, "New Order") %>
 
 <div class="page-header">
-  <h1>Orderss#new</h1>
+  <h1>Checkout</h1>
 </div>
-<p class="lead">Find me in app/views/orders/new.html.erb</p>
+<h2 class="lead">Order Summary</h2>
 
-<h3>Order Summary</h3>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -32,7 +31,6 @@
   </tbody>
 </table>
 
-<h3>Complete Checkout</h3>
 <%= form_tag orders_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -42,10 +40,10 @@
     <% end %>
   </article>
 
-  <div class="test">
+  <div class="test pull-right">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-label= "Enter Address and Payment Details"
+            data-label= "Complete Checkout"
             data-description="Ecom App Payment"
             data-amount="<%= (@cart.total_price * 100).to_i %>"
             data-email="user@test.com"

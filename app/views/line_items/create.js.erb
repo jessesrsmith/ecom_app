@@ -1,10 +1,10 @@
-$(".alert").hide();
+$(".alert").hide("slow");
 
-$(".cart-quantity").html(" <%= @cart.item_quantity %> item(s)");
+$(".cart-quantity").html(" <%= pluralize(@cart.item_quantity, "item") %>");
 
 $(window).off()
 
 $(window).on('popstate', function(event) {
-  $(".cart-quantity").html(" <%= @cart.item_quantity %> item(s)");
+  $(".cart-quantity").html(" <%= pluralize(@cart.item_quantity, "item") %> ");
   console.log("<%= @cart.item_quantity %>");
 });

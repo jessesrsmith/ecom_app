@@ -17,3 +17,6 @@
 
 #Ignore notes directory
 /notes
+
+#Ignore ByeBug history
+/.byebug_history

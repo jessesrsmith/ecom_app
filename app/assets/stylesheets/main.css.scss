@@ -3,10 +3,14 @@
 @import "bootstrap";
 @import "bootstrap/variables";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 // Mixins, Variables, etc.
 // --------------------------------------------------
 $footer-background: #f5f5f5;
 $gray-text: #bbb;
+
 
 // Custom page CSS
 // --------------------------------------------------
@@ -37,6 +41,7 @@ body {
   height: 60px;
   position: absolute;
   width: 100%;
+  margin: auto;
 
   >.container {
     padding-left: 15px;
@@ -44,7 +49,8 @@ body {
   }
  }
 
-.container .text-muted {
+.container .text-muted,
+           .list-inline {
   margin: 20px 0;
 }
 
@@ -138,12 +144,15 @@ input {
 // Button styles
 // --------------------------------------------------
 .btn {
-  margin-bottom: 18px;
   width: auto;
 }
 
 .store-btn {
   position: fixed;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
 }
 
 // Cart styles
@@ -154,12 +163,22 @@ input {
   }
 }
 
+.table-bordered {
+  margin-top: 20px;
+}
+
 //Checkout styles
 // --------------------------------------------------
 .test {
   .stripe-button-el {
+    margin-bottom: 20px;
     span {
-      //box-shadow: none;
+      background-color: $brand-primary;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      box-shadow: none;
+      height: 32px;
     }
   }
 }
