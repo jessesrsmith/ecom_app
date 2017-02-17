@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = flash[:danger] = "Please log in or #{view_context.link_to('Sign Up', signup_path)}"
         redirect_to login_url
       end
     end
@@ -74,10 +74,5 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
       rescue ActiveRecord::RecordNotFound
         redirect_to root_url  #prevents friendly forwarding from showing 404 pages
-    end
-
-    def admin_user
-      @user = current_user
-      redirect_to(root_url) unless logged_in? && @user.admin?
     end
 end

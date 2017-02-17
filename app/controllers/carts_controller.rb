@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:show, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   def show
@@ -8,10 +8,7 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
-    respond_to do |format|
-      format.html { redirect_to products_url, warning: "Your cart is empty" }
-      format.json { head :no_content }
-    end
+    redirect_to products_url, warning: "Your cart is empty"
   end
 
   private

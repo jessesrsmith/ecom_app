@@ -25,7 +25,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to @cart, success: "Quantity updated." }
         format.json { render :show, status: :ok, location: @line_item }
       else
-        format.html { render :edit }
+        format.html { redirect_to @cart, warning: "Something went wrong." }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +38,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to products_url, warning: "Your cart is empty", success: "Product was removed from cart." }
         format.json { head :no_content }
       else
-        format.html { redirect_to cart_path(id: @cart), success: "Product was removed from cart." }
+        format.html { redirect_to @cart, success: "Product was removed from cart." }
         format.json { head :no_content }
       end
     end
