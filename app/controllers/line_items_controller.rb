@@ -1,7 +1,6 @@
 class LineItemsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart,          only: [:create, :destroy, :update]
-  before_action :set_line_item,     only: [:update, :destroy]
+  before_action :set_cart,      only: [:create, :destroy, :update]
+  before_action :set_line_item, only: [:update, :destroy]
 
   def create
     product = Product.find(params[:product_id])
@@ -22,10 +21,10 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to @cart, success: "Quantity updated." }
+        format.html { redirect_to cart_path, success: "Quantity updated." }
         format.json { render :show, status: :ok, location: @line_item }
       else
-        format.html { redirect_to @cart, warning: "Something went wrong." }
+        format.html { redirect_to cart_path, warning: "Something went wrong." }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +37,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to products_url, warning: "Your cart is empty", success: "Product was removed from cart." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @cart, success: "Product was removed from cart." }
+        format.html { redirect_to cart_path, success: "Product was removed from cart." }
         format.json { head :no_content }
       end
     end

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info
 
   include SessionsHelper
-  include CurrentCart
 
   etag { set_cart.item_quantity }
 
@@ -15,5 +14,13 @@ class ApplicationController < ActionController::Base
   def admin_user
       @user = current_user
       redirect_to(root_url) unless logged_in? && @user.admin?
+  end
+
+  def set_cart
+    @cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    @cart = Cart.create
+    session[:cart_id] = @cart.id
+    return @cart
   end
 end
