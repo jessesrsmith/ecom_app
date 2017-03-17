@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     @charge = Order.place_stripe_order(params[:stripeEmail], params[:stripeToken], @cart.price_in_cents)
 
     # DB Order
-    @order = Order.new do |o|
+    @order = current_user.orders.build do |o|
       o.name = params[:stripeBillingName]
       o.total = @cart.total_price
     end
