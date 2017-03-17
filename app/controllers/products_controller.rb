@@ -9,12 +9,12 @@ class ProductsController < ApplicationController
   def show
   end
 
-  #Currently unused
+  # Currently unused
   def new
     @product = Product.new
   end
 
-  #Currently unused
+  # Currently unused
   def create
     @product = Product.new(product_params)
 
@@ -29,11 +29,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  #Currently unused
+  # Currently unused
   def edit
   end
 
-  #Currently unused
+  # Currently unused
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  #Currently unused
+  # Currently unused
   def destroy
     @product.destroy
     respond_to do |format|

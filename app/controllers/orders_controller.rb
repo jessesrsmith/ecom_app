@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
   before_action :admin_user,     only: [:index, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :create]
   
-  #Currently unused
+  # Currently unused
   def index
     @orders = Order.all
   end
 
-  #Currently unused
+  # Currently unused
   def show
   end
 
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  #Currently unused
+  # Currently unused
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  #Currently unused
+  # Currently unused
   def destroy
     @order.destroy
     respond_to do |format|
