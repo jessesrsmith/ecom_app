@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # Admin action for future functionality
   before_action :admin_user,     only: [:index, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :create]
-  
+
   # Currently unused
   def index
     @orders = Order.all
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to products_url, success: "Thanks for your order." }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new, warning: "Something went wrong."}
+        format.html { render :new, warning: "Something went wrong." }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
