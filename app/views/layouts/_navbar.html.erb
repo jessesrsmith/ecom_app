@@ -37,10 +37,15 @@
           <%= active_nav_link("Login", login_path) %>
           <%= active_nav_link("Sign Up", signup_path) %>
         <% end %>
-          <%= active_nav_link("<span class='glyphicon glyphicon-shopping-cart'></span>
-                               <span class='cart-quantity'>
-                                 #{ pluralize(current_cart.item_quantity, "item") }
-                               </span>".html_safe, cart_path(id: current_cart)) %>
+          <% if current_cart %>
+            <%= active_nav_link("<span class='glyphicon glyphicon-shopping-cart'></span>
+                                 <span class='cart-quantity'>
+                                   #{ pluralize(current_cart.item_quantity, "item") }
+                                 </span>".html_safe, cart_path) %>
+          <% else %>
+            <%= active_nav_link("<span class='glyphicon glyphicon-shopping-cart'></span>
+                                 <span class='cart-quantity'> 0 items</span>".html_safe, cart_path) %>
+          <% end %>
       </ul>
     </div>
   </div>

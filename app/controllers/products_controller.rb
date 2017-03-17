@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product,     only: [:show, :edit, :update, :destroy]
-  before_action :admin_user,      only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user,  only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @products = Product.order(:title)
@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
   def show
   end
 
+  # Currently unused
   def new
     @product = Product.new
   end
 
+  # Currently unused
   def create
     @product = Product.new(product_params)
 
@@ -27,9 +29,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  # Currently unused
   def edit
   end
 
+  # Currently unused
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -42,6 +46,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  # Currently unused
   def destroy
     @product.destroy
     respond_to do |format|
@@ -58,10 +63,5 @@ class ProductsController < ApplicationController
 
     def set_product
       @product = Product.find(params[:id])
-    end
-
-    def admin_user
-      @user = current_user
-      redirect_to(root_url) unless logged_in? && @user.admin?
     end
 end
