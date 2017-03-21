@@ -28,6 +28,7 @@
             ><%= current_user.name %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <%= active_nav_link("Account", current_user) %>
+              <%= active_nav_link("Orders", orders_path) %>
               <%= active_nav_link("Settings", edit_user_path(current_user)) %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Logout", logout_path, method:"delete" %></li>

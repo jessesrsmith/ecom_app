@@ -8,23 +8,3 @@
 <p>Name: <%= @user.name %></p> 
 <p>Email: <%= @user.email %></p>
 <a><%= link_to "Settings", edit_user_path(@user), class: "btn btn-default" %></a>
-
-<h2 class="lead">Order History</h2>
-<% @user.orders.each do |order| %>
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Billing Name</th>
-        <th>Total</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= number_to_currency(order.total) %></td>
-        <td><%= order.created_at.strftime("%B %d, %Y") %>
-      </tr>
-    </table>
-  </tbody>
-<% end %>

@@ -2,12 +2,12 @@ class OrdersController < ApplicationController
   before_action :set_cart,       only: [:new, :create]
   before_action :set_order,      only: [:show, :edit, :update, :destroy]
   # Admin action for future functionality
-  before_action :admin_user,     only: [:index, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :create]
 
   # Currently unused
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   # Currently unused
