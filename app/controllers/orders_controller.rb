@@ -24,14 +24,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @charge = Order.place_stripe_order(params[:stripeEmail], params[:stripeToken], @cart.price_in_cents)
-
-    # DB Order
-    @order = current_user.orders.build do |o|
-      o.name = params[:stripeBillingName]
-      o.total = @cart.total_price
-    end
-
+    customer = ChargeService.create_customer(params[:stripeEmail], params[:stripeToken])
+    @charge = ChargeService.place_order(customer, @cart.total_in_cents)
+    @order = current_user.orders.build(order_params)
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
@@ -79,7 +74,21 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.permit(:stripeBillingName, :stripeToken, :stripeEmail)
+      {
+        billing_name:     params[:stripeBillingName],
+        billing_country:  params[:stripeBillingAddressCountryCode],
+        billing_zip:      params[:stripeBillingAddressZip],
+        billing_address:  params[:stripeBillingAddressLine1],
+        billing_city:     params[:stripeBillingAddressCity],
+        billing_state:    params[:stripeBillingAddressState],
+        shipping_name:    params[:stripeShippingName],
+        shipping_country: params[:stripeShippingAddressCountryCode],
+        shipping_zip:     params[:stripeShippingAddressZip],
+        shipping_address: params[:stripeShippingAddressLine1],
+        shipping_city:    params[:stripeShippingAddressCity],
+        shipping_state:   params[:stripeShippingAddressState],
+        total:            @cart.total_in_cents
+      }
     end
 
     def logged_in_user
