@@ -41,6 +41,8 @@ gem 'bootstrap-will_paginate'
 gem 'stripe'
 gem 'font-awesome-sass'
 gem 'data-confirm-modal'
+gem 'uniqueness'
+gem 'whenever', :require => false
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
