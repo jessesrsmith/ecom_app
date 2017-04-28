@@ -1,29 +1,40 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Orders") %>
 
-<h1>Listing Orders</h1>
+<div class="page-header">
+  <h1>Your Orders</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Total</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @orders.empty? %>
+  <h2 class="lead">No orders yet.</h2>
+  <a><%= link_to "Check out the store!", products_path, class: "btn btn-default" %></a>
+<% else %>
+  <% @orders.order("created_at desc").each do |order| %>
+    <h2 class="lead"><%= order.created_at.strftime("%B %d, %Y")%> | Order #: <%= order.order_number %></h2>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= order.total %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="active">
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+      <tbody>
+        <% order.line_items.each do |item| %>
+          <tr>
+            <td><%= item.product.title %></td>
+            <td><%= number_to_currency(item.product.price) %></td>
+            <td><%= item.quantity %></td>
+            <td><%= number_to_currency(item.total_price) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="3"><h4>Order Total</h4></td>
+          <td><h4 class="cart_total"><%= number_to_currency(order.total_in_dollars) %></h4></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

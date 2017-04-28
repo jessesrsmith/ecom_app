@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    @user = current_user
-    redirect_to(root_url) unless logged_in? && @user.admin?
+    redirect_to(root_url) unless logged_in? && current_user.admin?
   end
 
   def set_cart

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928191300) do
+ActiveRecord::Schema.define(version: 20170426200916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,26 @@ ActiveRecord::Schema.define(version: 20160928191300) do
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.string   "name"
+    t.string   "billing_name"
     t.decimal  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+    t.string   "billing_country"
+    t.integer  "billing_zip"
+    t.string   "billing_address"
+    t.string   "billing_city"
+    t.string   "billing_state"
+    t.string   "shipping_name"
+    t.string   "shipping_country"
+    t.integer  "shipping_zip"
+    t.string   "shipping_address"
+    t.string   "shipping_city"
+    t.string   "shipping_state"
+    t.string   "order_number"
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -69,4 +84,5 @@ ActiveRecord::Schema.define(version: 20160928191300) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
 end
