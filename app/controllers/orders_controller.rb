@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
 
   def create
     customer = ChargeService.create_customer(params[:stripeEmail], params[:stripeToken])
-    @charge = ChargeService.place_order(customer, @cart.total_in_cents)
+    charge = ChargeService.place_order(customer, @cart.total_in_cents)
     @order = current_user.orders.build(order_params)
     @order.add_line_items_from_cart(@cart)
 
@@ -108,7 +108,7 @@ class OrdersController < ApplicationController
         total:            params[:total]
       }
     end
-      
+
 
     def logged_in_user
       unless logged_in?

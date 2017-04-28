@@ -32,7 +32,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
-  
+
   end
 
   test "should show order" do

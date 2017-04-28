@@ -1,4 +1,4 @@
-require 'stripe'
+require "stripe"
 
 class ChargeService
   def self.create_customer(email, stripe_token)
@@ -15,7 +15,7 @@ class ChargeService
       description: "Rails Stripe customer",
       currency:    "usd"
     )
-    rescue
-      false
+  rescue
+    false
   end
 end
