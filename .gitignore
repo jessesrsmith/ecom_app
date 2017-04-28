@@ -20,3 +20,6 @@
 
 #Ignore ByeBug history
 /.byebug_history
+
+#Ignore OSX files
+/.DS_Store

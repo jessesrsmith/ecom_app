@@ -23,7 +23,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should update line_item" do
     patch :update, id: @line_item, line_item: { product_id: @line_item.product_id }
-    assert_redirected_to assigns(:cart)
+    assert_redirected_to cart_path
   end
 
   test "should destroy line_item" do

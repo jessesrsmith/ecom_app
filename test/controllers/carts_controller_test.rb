@@ -18,10 +18,4 @@ class CartsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
-
-  test "should not allow access to invalid cart" do
-    get :show, id: "123"
-    assert_not flash.empty?
-    assert_redirected_to products_url
-  end
 end
