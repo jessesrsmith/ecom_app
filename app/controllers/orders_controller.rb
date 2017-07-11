@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
-      if @charge && @order.save
+      if charge && @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
 
