@@ -1,9 +1,9 @@
 # E-commerce app in Rails
 
-A fully functional e-commerce application in Rails. Includes user authentication and admin authorization with bCrypt. Uses TDD to drive 
-all layers of Rails development including unit, integration, and user acceptance tests. Postgres database. Integrates Stripe API for 
-payment processing. Hosted on Amazon Web Services.
+A fully functional e-commerce application in Rails. Includes user authentication and admin authorization with bCrypt. Uses tests to drive all layers of Rails development. Integrates Stripe API for payment processing and SendGrid for mailing. Placeholder images served from Placehold.it and styling uses Bootstrap. Code conforms to RuboCop style rules. Postgres database. Hosted on Heroku.
 
-Please note...
+A test account has been seeded in the database: 
+Email: user@test.com
+Password: foobar
 
-Live site
+[Live site](https://hidden-forest-4281.herokuapp.com/)

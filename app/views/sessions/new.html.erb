@@ -10,11 +10,11 @@
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', value: 'user@test.com' %>
 
       <%= f.label :password %>
       <%= link_to "(forgot password)", new_password_reset_path %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', value: 'foobar' %>
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
@@ -26,6 +26,10 @@
 
     <p class="form-control-static">
       No account? <%= link_to "Sign up now!", signup_path %>
+    </p>
+
+    <p class="alert alert-warning">
+      Note: For evaluation purposes the prefilled account may be used.
     </p>
   </div>
 </div>
